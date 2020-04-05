@@ -91,3 +91,4 @@ Then, from within your project folder:
 npm run build
 surge public my-project.surge.sh
 ```
+[![Netlify Status](https://api.netlify.com/api/v1/badges/552511d9-1464-4cbd-9016-197eda1d0d22/deploy-status)](https://app.netlify.com/sites/laughing-bardeen-92a979/deploys)
