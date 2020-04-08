@@ -5,13 +5,16 @@
 Welcome to my little weather comparitor app! 
 I would really like to move cities one day,
 and one of my criteria is that the weather be nicer,
-so I made this app to help me determine if I'm actually making any improvements
-in that area.
+so I made this app to help me ensure that!
 
 ## Contribution guide
 
 You're welcome to contribute! Most things are automated so all you have to do is write 
 application code.
+
+### Requirements
+
+Node.js 12.x
 
 ### Setting up a development environment
 
@@ -32,6 +35,7 @@ This repo is formatted with Babel so you can write in any complicated syntax you
 ### Git workflow and CI pipeline
 
 #### issue tracking
+
 You can take a look at the issues documented or supply your own. To take responsibility for an issue,
 just comment on the issue page that you are working on it, create a branch and develop as you like. Branch names or commit 
 messages don't need to follow any convention.
