@@ -37,21 +37,26 @@ This repo is formatted with Babel so you can write in any complicated syntax you
 #### issue tracking
 
 You can take a look at the issues documented or supply your own. To take responsibility for an issue,
-just comment on the issue page that you are working on it, create a branch and develop as you like. Branch names or commit 
-messages don't need to follow any convention.
+just comment on the issue page that you are working on it, create a branch and develop as you like. 
+Branch names or commit messages don't need to follow any convention.
 
 #### running the tests and linter locally
 
 When you're done writing your awesome code, you can:
 
-run the formatter and linter:
+check your code format:
 ```bash
-npm run format
+npm run lint
 ```
-NOTE: The formatter will automatically fix your code!
 
-run the tests:
+or prettify your code automagically:
 ```bash
+npm run prettify
+```
+
+and finally, run the tests:
+```bash
+npm run build
 npm run test
 ```
 
@@ -67,9 +72,9 @@ The PR will need one approval and one succesful test run, otherwise a merge will
 
 ### Writing tests
 
-You must write tests for any svelte apps that you create. The testing framework used is Jest,
-which provides the assertions and something else. Babel is included so that the tests can be written in ES6 syntax.
-The testing engine used is test-library.
+You must write tests for any svelte components that you create. The testing framework used is [Jest](https://jestjs.io/en/),
+which also provides the assertions. Babel is included so that the tests can be written in ES6 syntax.
+The testing engine used is [Testing-Library](https://testing-library.com/docs/svelte-testing-library/intro).
 
 ### Production mode
 
@@ -79,7 +84,8 @@ To create an optimised version of the app:
 npm run build
 ```
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), 
+which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
 
 ### Deployment
 
