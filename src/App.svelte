@@ -1,14 +1,10 @@
 <script>
-  export let name;
+  import TextInputBox from './TextInputBox.svelte';
 </script>
 
 <main>
-  <h1>Hello {name}!</h1>
-  <p>
-    Visit the
-    <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
-    to learn how to build Svelte apps.
-  </p>
+  <h1>Welcome!</h1>
+  <TextInputBox let:city={cityName}/>
 </main>
 
 <style>
@@ -19,8 +15,7 @@
     margin: 0 auto;
   }
   h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
+    color: lawngreen;
     font-size: 4em;
     font-weight: 100;
   }
