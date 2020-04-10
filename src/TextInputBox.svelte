@@ -1,8 +1,8 @@
 <script>
-    let cityName;
+    export let city = "";
 </script>
 
-<input bind:value={cityName}>
+<input bind:value={city}>
 
 <style>
     input {

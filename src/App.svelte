@@ -1,10 +1,13 @@
 <script>
   import TextInputBox from './TextInputBox.svelte';
+
+  let cityName;
 </script>
 
 <main>
   <h1>Welcome!</h1>
-  <TextInputBox let:city={cityName}/>
+  <TextInputBox bind:this={cityName}/>
+  <p>{cityName}</p>
 </main>
 
 <style>
