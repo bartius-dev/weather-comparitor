@@ -10,7 +10,7 @@
 
 <main>
   <h1>Welcome!</h1>
-  <CityInputField on:addCity={addCity}/>
+  <CityInputField on:addCity={addCity} />
 </main>
 
 <style>
