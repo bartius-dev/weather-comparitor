@@ -10,7 +10,7 @@
     publish = "public"
 
 [context.production.environment]
-    ROLLUP_WATCH = "false"
+    ROLLUP_WATCH = false
 
 [[redirects]]
     # no redirects, just putting this here for future proof
