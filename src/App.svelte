@@ -1,13 +1,16 @@
 <script>
-  import TextInputBox from './TextInputBox.svelte';
+  import CityInputField from './CityInputField.svelte';
 
-  let cityName;
+  let cities = [];
+
+  function addCity(newCityName) {
+    cities = [...cities, newCityName.detail.newCityName];
+  }
 </script>
 
 <main>
   <h1>Welcome!</h1>
-  <TextInputBox bind:this={cityName}/>
-  <p>{cityName}</p>
+  <CityInputField on:addCity={addCity}/>
 </main>
 
 <style>
@@ -17,8 +20,9 @@
     max-width: 240px;
     margin: 0 auto;
   }
+
   h1 {
-    color: lawngreen;
+    color: cornflowerblue;
     font-size: 4em;
     font-weight: 100;
   }
