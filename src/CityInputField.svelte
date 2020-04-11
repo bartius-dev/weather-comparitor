@@ -2,13 +2,13 @@
   // this component uses component bindings to communicate data
   import { createEventDispatcher } from 'svelte';
 
-  export let newCity = '';
+  export let newCityName = '';
 
   const dispatch = createEventDispatcher();
 
   function handleClick() {
     if (isInputSanitized()) {
-      dispatch('addCity', { newCityName: newCity });
+      dispatch('addCity', { newCityName });
       clearInputBox();
     } else {
       alert('Must enter the name of a city');
@@ -22,7 +22,7 @@
   }
 
   function isInputSanitized() {
-    if (newCity === '') {
+    if (newCityName === '') {
       return false;
     } else {
       return true;
@@ -30,12 +30,12 @@
   }
 
   function clearInputBox() {
-    newCity = '';
+    newCityName = '';
   }
 </script>
 
 <div class="space-underneath">
-<input bind:value={newCity} on:keydown={handleKeyup} />
+<input bind:value={newCityName} on:keydown={handleKeyup} />
 <button on:click|preventDefault={handleClick}>Enter</button>
 </div>
 <style>
