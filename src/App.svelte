@@ -1,9 +1,11 @@
 <script>
   import CityInputField from './CityInputField.svelte';
+  import WeatherTable from './WeatherTable.svelte';
 
   let cities = [];
 
   function addCity(newCityName) {
+    // TODO call the weather API here!!!
     cities = [...cities, newCityName.detail.newCityName];
   }
 </script>
@@ -11,6 +13,7 @@
 <main>
   <h1>Welcome!</h1>
   <CityInputField on:addCity={addCity} />
+  <WeatherTable cities={cities} />
 </main>
 
 <style>

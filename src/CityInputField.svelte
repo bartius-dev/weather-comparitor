@@ -34,16 +34,19 @@
   }
 </script>
 
+<div class="space-underneath">
 <input bind:value={newCity} on:keydown={handleKeyup} />
 <button on:click|preventDefault={handleClick}>Enter</button>
-
+</div>
 <style>
+  .space-underneath {
+    margin-bottom: 50px;
+  }
   input {
     color: cornflowerblue;
   }
   input:focus {
     border-color: cornflowerblue;
-    transition: border 0.2s ease-in-out;
     /*this outline: thin attribute makes the input more accessible to keyboard users*/
     outline: thin;
   }
