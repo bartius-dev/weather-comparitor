@@ -1,0 +1,31 @@
+
+<div class="fade-in">
+<h1>
+    ^
+</h1>
+<p>
+type a city name above!
+</p>
+</div>
+
+<style>
+p {
+    margin-top: -60px;
+}
+
+.fade-in {
+    -webkit-animation: fadeinout 4s linear;
+    animation: fadeinout 4s linear;
+    animation-iteration-count: infinite;
+    opacity: .3;
+}
+
+@-webkit-keyframes fadeinout {
+    50% { opacity: 0; }
+}
+
+@keyframes fadeinout {
+    50% { opacity: 1; }
+}
+
+</style>

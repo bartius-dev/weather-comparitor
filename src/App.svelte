@@ -1,8 +1,10 @@
 <script>
   import CityInputField from './CityInputField.svelte';
   import WeatherTable from './WeatherTable.svelte';
+  import InputCityNameNotification from './InputCityNameNotification.svelte';
+  import Welcome from './Welcome.svelte';
   // TODO remove this city object creation to CityInputField
-  import City from './City.js'
+  import City from './City.js';
 
   let cities = [];
 
@@ -14,9 +16,13 @@
 </script>
 
 <main>
-  <h1>Welcome!</h1>
+  <Welcome />
   <CityInputField on:addCity={addCity} />
-  <WeatherTable cities={cities} />
+  {#if cities.length === 0}
+    <InputCityNameNotification />
+  {:else}
+    <WeatherTable cities={cities} />
+  {/if}
 </main>
 
 <style>
@@ -25,12 +31,6 @@
     padding: 1em;
     max-width: 240px;
     margin: 0 auto;
-  }
-
-  h1 {
-    color: cornflowerblue;
-    font-size: 4em;
-    font-weight: 100;
   }
 
   @media (min-width: 640px) {

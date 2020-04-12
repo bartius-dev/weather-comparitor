@@ -12,6 +12,18 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
+h1 {
+	color: cornflowerblue;
+	font-size: 4em;
+	font-weight: 100;
+}
+
+p {
+	color: cornflowerblue;
+	font-size: 2em;
+	font-weight: 100;
+}
+
 a {
 	color: rgb(0,100,200);
 	text-decoration: none;
