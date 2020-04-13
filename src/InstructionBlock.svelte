@@ -2,7 +2,7 @@
 
 </script>
 
-<div class="fade-in">
+<div class="fade-in-out">
   <h1>^</h1>
   <p>type a city & country combo above!</p>
 </div>
@@ -12,7 +12,7 @@
     margin-top: -60px;
   }
 
-  .fade-in {
+  .fade-in-out {
     -webkit-animation: fadeinout 4s linear;
     animation: fadeinout 4s linear;
     animation-iteration-count: infinite;

@@ -8,21 +8,21 @@
     <th class="city-name-cell">
         City
     </th>
-    {#each cities[0].weather as w}
+    {#each cities[0].weather as header}
         <th class="data-cell thin">
-            {w.dayOfWeek}
+            {header.dayOfWeek}
         </th>
     {/each}
     </thead>
     { #each cities as city }
         <tr>
             <td class="city-name-cell thin">{city.city}</td>
-            { #each city.weather as w }
+            { #each city.weather as weather }
                 <td class="data-cell">
                     {#if city.isBase}
-                        {w.high}
+                        {weather.high}
                     {:else}
-                        <Difference high="{w.high}" difference="{w.high - 5}"/>
+                        <Difference high="{weather.high}" difference="{weather.high - 5}"/>
                     {/if}
                 </td>
             {/each}

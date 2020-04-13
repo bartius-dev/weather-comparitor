@@ -1,6 +1,6 @@
 <h1>Welcome!</h1>
 <div class="cloud" />
-<div class="white-ball" />
+<div class="cloud-fluff" />
 
 <style>
   .cloud {
@@ -36,7 +36,7 @@
     border-radius: 50%;
   }
 
-  .white-ball {
+  .cloud-fluff {
     left: 55%;
     top: 122px;
     position: absolute;

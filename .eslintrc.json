@@ -18,5 +18,8 @@
   "rules": {
     "prettier/prettier": "error",
     "svelte3/lint-template": 2
+  },
+  "globals": {
+    "process": "readonly"
   }
 }

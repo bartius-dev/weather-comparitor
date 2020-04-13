@@ -32,7 +32,7 @@
         });
     } else {
       alert(`Must enter the name of a ${missingInput}`);
-      // TODO must add a custom function here to notify the user subtly (nothing like a modal, more like a little text bubble)
+      // TODO #32
     }
   }
 
