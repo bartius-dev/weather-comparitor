@@ -41,7 +41,8 @@ export default {
 					isProd: production,
 					...config().parsed
 				}
-			})
+			}),
+			"WEATHER_API_KEY": process.env.WEATHER_API_KEY
 		}),
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
