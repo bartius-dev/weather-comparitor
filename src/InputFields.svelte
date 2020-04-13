@@ -1,23 +1,35 @@
 <script>
   // this component uses component bindings to communicate data
-  import { createEventDispatcher } from 'svelte';
-  import City from './City.js';
+  import { createEventDispatcher } from "svelte";
+  import City from "./City.js";
 
-  let newCityName = '';
-  let newCountryName = '';
+  let newCityName = "";
+  let newCountryName = "";
 
   const dispatch = createEventDispatcher();
 
   function handleClick() {
     let missingInput = isMissingInput();
     // really wish this if statement would go away
-    if (missingInput === '') {
+    if (missingInput === "") {
       getWeather()
-      .then(weather => {
-        let newCity = new City(newCityName, newCountryName, false, weather);
-        dispatch('addCity', { newCity });
-        clearInputBoxes();
-      })
+        .then((weather) => {
+          let newCity = new City(
+            newCityName,
+            newCountryName,
+            false,
+            weather.data
+          );
+          dispatch("addCity", { newCity });
+          clearInputBoxes();
+        })
+        .catch((reason) => {
+          if (reason === "No Content") {
+            alert("That city and/or country doesn't seem to exist...");
+          } else {
+            alert("Whoops, something went wrong");
+          }
+        });
     } else {
       alert(`Must enter the name of a ${missingInput}`);
       // TODO must add a custom function here to notify the user subtly (nothing like a modal, more like a little text bubble)
@@ -25,39 +37,39 @@
   }
 
   function handleKeyup(event) {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       handleClick();
     }
   }
 
   function isMissingInput() {
     // no idea how to do this without an if statement
-    if (newCityName === '' && newCountryName === '') {
-      return "city and a country!"
-    } else if (newCityName === '') {
+    if (newCityName === "" && newCountryName === "") {
+      return "city and a country!";
+    } else if (newCityName === "") {
       return "city";
-    } else if (newCountryName === '') {
-      return 'country';
+    } else if (newCountryName === "") {
+      return "country";
     } else {
-      return ''
+      return "";
     }
   }
 
   function clearInputBoxes() {
-    newCityName = '';
-    newCountryName = '';
+    newCityName = "";
+    newCountryName = "";
   }
 
   function getWeather() {
-    let weather = fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${newCityName}&country=${newCountryName}&key=${process.env.WEATHER_API_KEY}`)
-    .then(response => {
-      if (response.ok) return response.json()
+    let weather = fetch(
+      `https://api.weatherbit.io/v2.0/forecast/daily?city=${newCityName}&country=${newCountryName}&key=${process.env.WEATHER_API_KEY}`
+    ).then((response) => {
+      if (response.status === 200) {
+        return response.json();
+      }
 
-      throw new Error();
-    })
-    .then(jsonResponse => {
-      return jsonResponse.data;
-    })
+      return Promise.reject(response.statusText);
+    });
 
     return weather;
   }
@@ -65,7 +77,10 @@
 
 <div class="space-underneath">
   <input placeholder="City" bind:value={newCityName} on:keyup={handleKeyup} />
-  <input placeholder="Country" bind:value={newCountryName} on:keyup={handleKeyup} />
+  <input
+    placeholder="Country"
+    bind:value={newCountryName}
+    on:keyup={handleKeyup} />
   <button on:click|preventDefault={handleClick}>Enter</button>
 </div>
 

@@ -1,7 +1,7 @@
 <script>
-  import CityInputField from './CityInputField.svelte';
+  import InstructionBlock from './InstructionBlock.svelte';
+  import InputFields from './InputFields.svelte';
   import WeatherTable from './WeatherTable.svelte';
-  import InputCityNameNotification from './InputCityNameNotification.svelte';
   import Welcome from './Welcome.svelte';
 
   let cities = [];
@@ -17,9 +17,9 @@
 
 <main>
   <Welcome />
-  <CityInputField on:addCity={addCity} />
+  <InputFields on:addCity={addCity} />
   {#if cities.length === 0}
-    <InputCityNameNotification />
+    <InstructionBlock />
   {:else}
     <WeatherTable cities={cities} />
   {/if}

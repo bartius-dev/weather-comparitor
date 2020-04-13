@@ -1,15 +1,15 @@
-import App from '../src/App.svelte';
-import { render } from '@testing-library/svelte';
-import '@testing-library/jest-dom/extend-expect';
+import App from "../src/App.svelte";
+import { render } from "@testing-library/svelte";
+import "@testing-library/jest-dom/extend-expect";
 
-test('should render Hello World', async () => {
-  const { getByText } = render(App, { name: 'World' });
+test("should render Hello World", async () => {
+  const { getByText } = render(App, { name: "World" });
 
-  expect(getByText('Hello World!')).toBeInTheDocument();
+  expect(getByText("Hello World!")).toBeInTheDocument();
 });
 
-test('should render Hello Nigel', async () => {
-  const { getByText } = render(App, { name: 'Nigel' });
+test("should render Hello Nigel", async () => {
+  const { getByText } = render(App, { name: "Nigel" });
 
-  expect(getByText('Hello Nigel!')).toBeInTheDocument();
+  expect(getByText("Hello Nigel!")).toBeInTheDocument();
 });

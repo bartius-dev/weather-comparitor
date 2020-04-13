@@ -1,8 +1,5 @@
 <script>
-    export let high;
-    export let difference;
+  export let high;
 </script>
 
-<div>
-    {high}
-</div>
+<div>{high}</div>

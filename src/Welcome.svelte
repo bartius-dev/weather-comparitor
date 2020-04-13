@@ -15,7 +15,7 @@
   }
 
   .cloud:before {
-    content: '';
+    content: "";
     position: absolute;
     top: -30px;
     left: 20px;
@@ -26,7 +26,7 @@
   }
 
   .cloud:after {
-    content: '';
+    content: "";
     position: absolute;
     top: -50px;
     right: 15px;
