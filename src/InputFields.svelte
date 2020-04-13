@@ -61,8 +61,9 @@
   }
 
   function getWeather() {
+    let apiKey = process.env.WEATHER_API_KEY || "WEATHER_API_KEY";
     let weather = fetch(
-      `https://api.weatherbit.io/v2.0/forecast/daily?city=${newCityName}&country=${newCountryName}&key=${process.env.WEATHER_API_KEY}`
+      `https://api.weatherbit.io/v2.0/forecast/daily?city=${newCityName}&country=${newCountryName}&key=${apiKey}`
     ).then((response) => {
       if (response.status === 200) {
         return response.json();
