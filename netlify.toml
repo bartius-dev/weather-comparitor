@@ -1,0 +1,16 @@
+[build]
+    command = "npm run build"
+    publish = "public"
+
+[context.production]
+    # Nothing is really different in the production context
+    # but it's here if it needs to change
+    # production branch is master
+    command = "npm run build"
+    publish = "public"
+
+[[redirects]]
+    # no redirects, just putting this here for future proof
+    from = "/api"
+    to = "/"
+    status = 200

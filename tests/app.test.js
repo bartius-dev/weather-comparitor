@@ -1,4 +1,4 @@
-import App from "../src/App.svelte";
+import App from "../src/components/App.svelte";
 import { render } from "@testing-library/svelte";
 import "@testing-library/jest-dom/extend-expect";
 

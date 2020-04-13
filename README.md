@@ -5,9 +5,9 @@
 ![Node.js CI](https://github.com/bartius-nigel/weather-comparitor/workflows/Node.js%20CI/badge.svg)
 
 Welcome to my little weather comparitor app! 
-I would really like to move cities one day,
-and one of my criteria is that the weather be nicer,
-so I made this app to help me ensure that!
+This little app will help you compare the weather in any city
+to any other city you want. Make packing for your next vacation
+just that much simpler!
 
 ## Contribution guide
 

@@ -1,7 +1,7 @@
 <script>
   // this component uses component bindings to communicate data
   import { createEventDispatcher } from "svelte";
-  import City from "./City.js";
+  import City from "../City.js";
 
   let newCityName = "";
   let newCountryName = "";
