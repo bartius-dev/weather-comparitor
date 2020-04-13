@@ -1,31 +1,33 @@
+<script>
+
+</script>
 
 <div class="fade-in">
-<h1>
-    ^
-</h1>
-<p>
-type a city name above!
-</p>
+  <h1>^</h1>
+  <p>type a city & country combo above!</p>
 </div>
 
 <style>
-p {
+  p {
     margin-top: -60px;
-}
+  }
 
-.fade-in {
+  .fade-in {
     -webkit-animation: fadeinout 4s linear;
     animation: fadeinout 4s linear;
     animation-iteration-count: infinite;
-    opacity: .3;
-}
+    opacity: 0.3;
+  }
 
-@-webkit-keyframes fadeinout {
-    50% { opacity: 0; }
-}
+  @-webkit-keyframes fadeinout {
+    50% {
+      opacity: 0;
+    }
+  }
 
-@keyframes fadeinout {
-    50% { opacity: 1; }
-}
-
+  @keyframes fadeinout {
+    50% {
+      opacity: 1;
+    }
+  }
 </style>

@@ -1,4 +1,5 @@
 <script>
+    import Difference from './Difference.svelte';
     export let cities;
 </script>
 
@@ -7,36 +8,24 @@
         <th class="city-name-cell">
             City
         </th>
-        <th class="data-cell thin">
-            one
-        </th>
-        <th class="data-cell thin">
-            two
-        </th>
-        <th class="data-cell thin">
-            one
-        </th>
-        <th class="data-cell thin">
-            two
-        </th>
-        <th class="data-cell thin">
-            one
-        </th>
-        <th class="data-cell thin">
-            two
-        </th>
-        <th class="data-cell thin">
-            one
-        </th>
-        <th class="data-cell thin">
-            two
-        </th>
+            {#each cities[0].weather as w}
+                <th class="data-cell thin">
+                    {w.dayOfWeek}
+                </th>
+            {/each}
     </thead>
     { #each cities as city }
     <tr>
-        <td class="city-name-cell thin">{city.name}</td>
-        <td class="data-cell">14</td>
-        <td class="data-cell">1</td>
+        <td class="city-name-cell thin">{city.city}</td>
+        { #each city.weather as w }
+            <td class="data-cell">
+                {#if city.isBase}
+                    {w.high}
+                {:else}
+                    <Difference high="{w.high}" difference="{w.high - 5}"/>
+                {/if}
+            </td>
+        {/each}
     </tr>
     { /each }
 </table>

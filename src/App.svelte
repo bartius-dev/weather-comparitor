@@ -3,15 +3,15 @@
   import WeatherTable from './WeatherTable.svelte';
   import InputCityNameNotification from './InputCityNameNotification.svelte';
   import Welcome from './Welcome.svelte';
-  // TODO remove this city object creation to CityInputField
-  import City from './City.js';
 
   let cities = [];
 
-  function addCity(newCityName) {
-    let newcity = new City(newCityName.detail.newCityName);
-    // TODO call the weather API here!!!
-    cities = [...cities, newcity];
+  function addCity(newCity) {
+    if (cities.length === 0)
+    {
+      newCity.detail.newCity.setToBase();
+    }
+    cities = [...cities, newCity.detail.newCity];
   }
 </script>
 
