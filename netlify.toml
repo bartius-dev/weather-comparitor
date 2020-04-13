@@ -9,9 +9,6 @@
     command = "npm run build"
     publish = "public"
 
-[context.production.environment]
-    ROLLUP_WATCH = false
-
 [[redirects]]
     # no redirects, just putting this here for future proof
     from = "/api"
