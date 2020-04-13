@@ -1,14 +1,28 @@
 <script>
-  export let name;
+  import InstructionBlock from './InstructionBlock.svelte';
+  import InputFields from './InputFields.svelte';
+  import WeatherTable from './WeatherTable.svelte';
+  import Welcome from './Welcome.svelte';
+
+  let cities = [];
+
+  function addCity(newCity) {
+    if (cities.length === 0)
+    {
+      newCity.detail.newCity.setToBase();
+    }
+    cities = [...cities, newCity.detail.newCity];
+  }
 </script>
 
 <main>
-  <h1>Hello {name}!</h1>
-  <p>
-    Visit the
-    <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
-    to learn how to build Svelte apps.
-  </p>
+  <Welcome />
+  <InputFields on:addCity={addCity} />
+  {#if cities.length === 0}
+    <InstructionBlock />
+  {:else}
+    <WeatherTable cities={cities} />
+  {/if}
 </main>
 
 <style>
@@ -17,12 +31,6 @@
     padding: 1em;
     max-width: 240px;
     margin: 0 auto;
-  }
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
   }
 
   @media (min-width: 640px) {
