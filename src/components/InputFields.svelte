@@ -1,57 +1,38 @@
 <script>
-  // this component uses component bindings to communicate data
-  import { createEventDispatcher } from "svelte";
+  import cities from "../Stores.js";
   import City from "../City.js";
 
   let newCityName = "";
   let newCountryName = "";
 
-  const dispatch = createEventDispatcher();
-
   function handleClick() {
-    let missingInput = isMissingInput();
-    // really wish this if statement would go away
-    if (missingInput === "") {
-      getWeather()
-        .then((weather) => {
-          let newCity = new City(
-            newCityName,
-            newCountryName,
-            false,
-            weather.data
-          );
-          dispatch("addCity", { newCity });
-          clearInputBoxes();
-        })
-        .catch((reason) => {
-          if (reason === "No Content") {
-            alert("That city and/or country doesn't seem to exist...");
-          } else {
-            alert("Whoops, something went wrong");
-          }
-        });
-    } else {
-      alert(`Must enter the name of a ${missingInput}`);
-      // TODO #32
-    }
+    getWeather()
+      .then((weather) => {
+        let newCity = new City(
+          newCityName,
+          newCountryName,
+          $cities.length,
+          weather.data
+        );
+        cities.addCity(newCity);
+        clearInputBoxes();
+      })
+      .catch((statusCode) => {
+        if (process.env.isProd) {
+          console.clear();
+        }
+
+        if (statusCode === 400) {
+          alert("No input!")
+        } else if (statusCode === 203) {
+          alert("Could not find that city & country combo")
+        }
+      });
   }
 
   function handleKeyup(event) {
     if (event.key === "Enter") {
       handleClick();
-    }
-  }
-
-  function isMissingInput() {
-    // no idea how to do this without an if statement
-    if (newCityName === "" && newCountryName === "") {
-      return "city and a country!";
-    } else if (newCityName === "") {
-      return "city";
-    } else if (newCountryName === "") {
-      return "country";
-    } else {
-      return "";
     }
   }
 
@@ -69,7 +50,7 @@
         return response.json();
       }
 
-      return Promise.reject(response.statusText);
+      return Promise.reject(response.status);
     });
 
     return weather;
@@ -77,7 +58,10 @@
 </script>
 
 <div class="space-underneath">
-  <input placeholder="City" bind:value={newCityName} on:keyup={handleKeyup} />
+  <input
+    placeholder="City"
+    bind:value={newCityName}
+    on:keyup={handleKeyup} />
   <input
     placeholder="Country"
     bind:value={newCountryName}
