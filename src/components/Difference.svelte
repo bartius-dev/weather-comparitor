@@ -3,6 +3,9 @@
   export let baseWeather;
   export let index;
 
+  console.log(weather);
+  console.log(baseWeather);
+
   let difference = weather.high - baseWeather[index].high;
   let differenceMap = {};
   let tempDifference = 50;

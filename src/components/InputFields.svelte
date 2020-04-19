@@ -18,7 +18,7 @@
         clearInputBoxes();
       })
       .catch((statusCode) => {
-        if (process.env.isProd) {
+        if (process.env.IS_PROD) {
           console.clear();
         }
 
@@ -58,7 +58,7 @@
 </script>
 
 <div class="space-underneath">
-  <input
+  <input id="cityInput"
     placeholder="City"
     bind:value={newCityName}
     on:keyup={handleKeyup} />

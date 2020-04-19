@@ -38,7 +38,7 @@ export default {
 		replace({
 			process: JSON.stringify({
 				env: {
-					isProd: production,
+					IS_PROD: production,
 					...config().parsed
 				}
 			}),
