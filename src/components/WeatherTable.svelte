@@ -1,7 +1,7 @@
 <script>
   import Difference from "./Difference.svelte";
   import InstructionBlock from "./InstructionBlock.svelte";
-  import cities from '../Stores';
+  import cities from '../stores/Cities.js';
 </script>
 
 {#if $cities.length === 0}

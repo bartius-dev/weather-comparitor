@@ -1,8 +1,8 @@
 class City {
   constructor(city, country, isBase, data) {
+    this.isBase = !Boolean(isBase);
     this.city = city;
     this.country = country;
-    this.isBase = !Boolean(isBase);
     this.weather = [];
     for (let i = 0; i < 12; i++) {
       let dateArray = data[i].datetime.split("-");

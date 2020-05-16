@@ -1,5 +1,5 @@
 <script>
-  import cities from "../Stores.js";
+  import cities from "../stores/Cities.js";
   import City from "../City.js";
 
   let newCityName = "";

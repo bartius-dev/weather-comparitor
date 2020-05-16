@@ -14,7 +14,7 @@ function createCitiesStore() {
           }
         })
       ),
-    reset: () => set(0),
+    reset: () => set([]),
   };
 }
 
