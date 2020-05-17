@@ -23,9 +23,9 @@
         }
 
         if (statusCode === 400) {
-          alert("No input!")
+          alert("No input!");
         } else if (statusCode === 203) {
-          alert("Could not find that city & country combo")
+          alert("Could not find that city & country combo");
         }
       });
   }
@@ -58,7 +58,8 @@
 </script>
 
 <div class="space-underneath">
-  <input id="cityInput"
+  <input
+    id="cityInput"
     placeholder="City"
     bind:value={newCityName}
     on:keyup={handleKeyup} />

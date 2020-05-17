@@ -74,9 +74,9 @@ The PR will need one approval and one succesful test run, otherwise a merge will
 
 ### Writing tests
 
-You must write tests for any svelte components that you create. The testing framework used is [Jest](https://jestjs.io/en/),
+If it's possible, write some tests for any svelte components or logic files that you create. The testing framework used is [Jest](https://jestjs.io/en/),
 which also provides the assertions. Babel is included so that the tests can be written in ES6 syntax.
-The testing engine used is [Testing-Library](https://testing-library.com/docs/svelte-testing-library/intro).
+The testing engine used for svelte components is [Testing-Library](https://testing-library.com/docs/svelte-testing-library/intro).
 
 ### Production mode
 

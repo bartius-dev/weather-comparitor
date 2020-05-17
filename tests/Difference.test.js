@@ -9,11 +9,10 @@ describe("[UNIT] <Difference />", () => {
       weather: {
         dayOfWeek: "Sun",
         low: 1,
-        high: 12},
-      baseWeather: [
-        {dayOfWeek: "Sun", low: 1, high: 12}
-      ],
-      index: 0
+        high: 12,
+      },
+      baseWeather: [{ dayOfWeek: "Sun", low: 1, high: 12 }],
+      index: 0,
     });
     let differenceSpan = document.getElementById("difference");
     !expect(differenceSpan).toBeVisible();
@@ -26,12 +25,13 @@ describe("[UNIT] <Difference />", () => {
       weather: {
         dayOfWeek: "Sun",
         low: 1,
-        high: 12},
+        high: 12,
+      },
       baseWeather: [
-        {dayOfWeek: "Sun", low: 1, high: 12},
-        {dayOfWeek: "Mon", low: 1, high: 13}
+        { dayOfWeek: "Sun", low: 1, high: 12 },
+        { dayOfWeek: "Mon", low: 1, high: 13 },
       ],
-      index: 1
+      index: 1,
     });
 
     let differenceSpan = document.getElementById("difference");
@@ -48,30 +48,31 @@ describe("[UNIT] <Difference />", () => {
     [3, 5, "not-much-colder"],
     [4, 11, "warmer"],
     [5, 21, "hotter"],
-    [6, 31, "much-hotter"]
-  ])
-    .test("should render the appropriate text colour", (i, difference, colourClass) => {
+    [6, 31, "much-hotter"],
+  ]).test(
+    "should render the appropriate text colour",
+    (i, difference, colourClass) => {
       render(Difference, {
         weather: {
           dayOfWeek: "Sun",
           low: 0,
-          high: 0},
+          high: 0,
+        },
         baseWeather: [
-          {dayOfWeek: "Sun", low: 0, high: 0},
-          {dayOfWeek: "Mon", low: 1, high: 16},
-          {dayOfWeek: "Tue", low: 3, high: 6},
-          {dayOfWeek: "Wed", low: 3, high: -5},
-          {dayOfWeek: "Thu", low: 3, high: -11},
-          {dayOfWeek: "Fri", low: 4, high: -21},
-          {dayOfWeek: "Sat", low: 5, high: -31}
-          ],
-        index: i
+          { dayOfWeek: "Sun", low: 0, high: 0 },
+          { dayOfWeek: "Mon", low: 1, high: 16 },
+          { dayOfWeek: "Tue", low: 3, high: 6 },
+          { dayOfWeek: "Wed", low: 3, high: -5 },
+          { dayOfWeek: "Thu", low: 3, high: -11 },
+          { dayOfWeek: "Fri", low: 4, high: -21 },
+          { dayOfWeek: "Sat", low: 5, high: -31 },
+        ],
+        index: i,
       });
 
       let differenceSpan = document.getElementById("difference");
       expect(differenceSpan).toHaveTextContent(difference);
       expect(differenceSpan).toHaveClass(colourClass);
-    });
-})
-
-
+    }
+  );
+});
