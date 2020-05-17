@@ -24,7 +24,7 @@
 
         if (statusCode === 400) {
           alert("No input!");
-        } else if (statusCode === 204 || 203) {
+        } else if (statusCode === 204 || statusCode === 203) {
           alert("Could not find that city & country combo");
         }
       });
