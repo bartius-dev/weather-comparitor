@@ -1,8 +1,8 @@
 class City {
   constructor(city, country, isBase, data) {
+    this.isBase = !Boolean(isBase);
     this.city = city;
     this.country = country;
-    this.isBase = isBase;
     this.weather = [];
     for (let i = 0; i < 12; i++) {
       let dateArray = data[i].datetime.split("-");
@@ -13,16 +13,12 @@ class City {
       ).getDay();
       this.weather.push({
         dayOfWeek: daysOfTheWeek[dayIndex],
-        low: data[i].low_temp,
-        high: data[i].max_temp,
+        low: Math.floor(data[i].low_temp),
+        high: Math.floor(data[i].max_temp),
       });
     }
   }
 }
-
-City.prototype.setToBase = function () {
-  this.isBase = true;
-};
 
 const daysOfTheWeek = {
   0: "Sun",

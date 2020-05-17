@@ -1,34 +1,35 @@
 <script>
   import Difference from "./Difference.svelte";
-  export let cities;
+  import InstructionBlock from "./InstructionBlock.svelte";
+  import cities from '../stores/Cities.js';
 </script>
 
+{#if $cities.length === 0}
+    <InstructionBlock/>
+{:else}
 <table class="fade-in">
     <thead>
     <th class="city-name-cell">
         City
     </th>
-    {#each cities[0].weather as header}
+    {#each $cities[0].weather as header}
         <th class="data-cell thin">
             {header.dayOfWeek}
         </th>
     {/each}
     </thead>
-    { #each cities as city }
+    { #each $cities as city }
         <tr>
             <td class="city-name-cell thin">{city.city}</td>
-            { #each city.weather as weather }
+            { #each city.weather as weather, index }
                 <td class="data-cell">
-                    {#if city.isBase}
-                        {weather.high}
-                    {:else}
-                        <Difference high="{weather.high}" difference="{weather.high - 5}"/>
-                    {/if}
+                    <Difference weather="{weather}" baseWeather="{$cities[0].weather}" index="{index}"/>
                 </td>
             {/each}
         </tr>
     { /each }
 </table>
+{/if}
 
 <style>
   table {

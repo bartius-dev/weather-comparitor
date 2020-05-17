@@ -1,2 +1,2 @@
-src/WeatherTable.svelte
-src/App.svelte
+src/components/WeatherTable.svelte
+src/components/App.svelte
