@@ -11,7 +11,6 @@
         let newCity = new City(
           newCityName,
           newCountryName,
-          $cities.length,
           weather.data
         );
         cities.addCity(newCity);

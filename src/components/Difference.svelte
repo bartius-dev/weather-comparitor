@@ -1,9 +1,9 @@
 <script>
   export let weather;
   export let baseWeather;
-  export let index;
+  export let weatherMeasurementIndex;
 
-  let difference = weather.high - baseWeather[index].high;
+  let difference = weather.high - baseWeather[weatherMeasurementIndex].high;
   let differenceMap = {};
   let tempDifference = 50;
   for (let i = 0; i < 100; i++) {

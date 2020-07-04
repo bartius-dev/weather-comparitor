@@ -6,7 +6,7 @@ describe("[UNIT] City class", () => {
     let cities = [];
 
     for (let i = 0; i < 50; i++) {
-      let newCity = new City("calgary", "canada", cities.length, [
+      let newCity = new City("calgary", "canada", [
         {
           datetime: "2020-05-15",
           low_temp: "5",
