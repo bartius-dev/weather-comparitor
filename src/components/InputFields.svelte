@@ -8,11 +8,7 @@
   function handleClick() {
     getWeather()
       .then((weather) => {
-        let newCity = new City(
-          newCityName,
-          newCountryName,
-          weather.data
-        );
+        let newCity = new City(newCityName, newCountryName, weather.data);
         cities.addCity(newCity);
         clearInputBoxes();
       })
