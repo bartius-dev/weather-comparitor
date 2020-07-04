@@ -12,7 +12,7 @@ describe("[UNIT] <Difference />", () => {
         high: 12,
       },
       baseWeather: [{ dayOfWeek: "Sun", low: 1, high: 12 }],
-      index: 0,
+      weatherMeasurementIndex: 0,
     });
     let differenceSpan = document.getElementById("difference");
     !expect(differenceSpan).toBeVisible();
@@ -31,7 +31,7 @@ describe("[UNIT] <Difference />", () => {
         { dayOfWeek: "Sun", low: 1, high: 12 },
         { dayOfWeek: "Mon", low: 1, high: 13 },
       ],
-      index: 1,
+      weatherMeasurementIndex: 1,
     });
 
     let differenceSpan = document.getElementById("difference");
@@ -67,7 +67,7 @@ describe("[UNIT] <Difference />", () => {
           { dayOfWeek: "Fri", low: 4, high: -21 },
           { dayOfWeek: "Sat", low: 5, high: -31 },
         ],
-        index: i,
+        weatherMeasurementIndex: i,
       });
 
       let differenceSpan = document.getElementById("difference");

@@ -1,6 +1,5 @@
 class City {
-  constructor(city, country, isBase, data) {
-    this.isBase = !Boolean(isBase);
+  constructor(city, country, data) {
     this.city = city;
     this.country = country;
     this.weather = [];

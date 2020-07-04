@@ -6,7 +6,7 @@ describe("[UNIT] Cities Store", () => {
   let newCity;
 
   beforeAll(() => {
-    newCity = new City("calgary", "canada", "true", [
+    newCity = new City("calgary", "canada", [
       {
         datetime: "2020-05-15",
         low_temp: "5",
