@@ -6,10 +6,9 @@ function createCitiesStore() {
   return {
     subscribe,
     addCity: (city) => update((cities) => [...cities, city]),
-    deleteCity: (cityToRemove) =>
-      update((cities) =>
+    deleteCity: (cityToRemove) => update((cities) =>
         cities.filter((city) => {
-          if (city.id !== cityToRemove.id) {
+          if (city.city !== cityToRemove) {
             return city;
           }
         })
