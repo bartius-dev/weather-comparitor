@@ -1,28 +1,11 @@
 <script>
-import { onMount } from 'svelte';
   import Difference from "./Difference.svelte";
   import InstructionBlock from "./InstructionBlock.svelte";
   import cities from '../stores/Cities.js';
-  import getWeather from '../GetWeather';
 
   function handleDelete(event) {
-      cities.deleteCity(event.target.id);
+    cities.deleteCity(event.target.id);
   }
-
-  onMount(() => {
-    let savedCities = localStorage.getItem("cities");
-    for (let city in savedCities) {
-      getWeather(city.city, city.country)
-              .then((weather) => {
-                  let newCity = new City(
-                          city.city,
-                          city.country,
-                          weather.data
-                  );
-                  cities.addCity(newCity);
-              })
-    }
-  })
 </script>
 
 {#if $cities.length === 0}
