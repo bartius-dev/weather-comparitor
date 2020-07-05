@@ -3,9 +3,8 @@
   import InstructionBlock from "./InstructionBlock.svelte";
   import cities from '../stores/Cities.js';
 
-  function handleClick(event) {
-    // console.log(cities);
-      cities.deleteCity(event.target.id);
+  function handleDelete(event) {
+    cities.deleteCity(event.target.id);
   }
 </script>
 
@@ -25,7 +24,7 @@
     </thead>
     { #each $cities as city}
         <tr>
-            <td><div on:click|preventDefault={handleClick} id={city.city} class="delete">x</div><span class="city-name-cell thin">{city.city}</span></td>
+            <td on:click|preventDefault={handleDelete} id={city.city} class="city-name-cell thin">{city.city}</td>
             { #each city.weather as weather, index }
                 <td class="data-cell">
                     <Difference weather="{weather}" baseWeather="{$cities[0].weather}" weatherMeasurementIndex="{index}"/>
@@ -80,17 +79,9 @@
   .thin {
     font-weight: lighter;
   }
-  .delete {
-      visibility: hidden;
-      display: inline-block;
-  }
-  tr:hover div.delete {
+  td.city-name-cell:hover {
+      text-decoration: line-through;
       cursor: pointer;
-      visibility: visible;
-      position: relative;
-      right: 25px;
-      color: orangered;
-      display: inline-block;
   }
   .fade-in {
     animation: fadeIn ease 2s;
