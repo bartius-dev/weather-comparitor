@@ -12,8 +12,16 @@ class City {
       ).getDay();
       this.weather.push({
         dayOfWeek: daysOfTheWeek[dayIndex],
-        low: Math.floor(data[i].low_temp),
-        high: Math.floor(data[i].max_temp),
+        lowTempCelsius: Math.floor(data[i].low_temp),
+        lowTempFahrenheit: Math.floor(data[i].low_temp * 1.8 + 32),
+        highTempCelsius: Math.floor(data[i].max_temp),
+        highTempFahrenheit: Math.floor(data[i].max_temp * 1.8 + 32),
+        cloudiness: data[i].clouds, // measured in percentage of coverage
+        uv: data[i].uv, // on a scale of 0-11
+        windSpeed: data[i].wind_spd, // measured in m/s
+        humidity: data[i].rh, // measured in percentage
+        solarRadiation: data[i].solar_rad, // measured in W / m^2
+        airQuality: data[i].aqi // measured in US - EPA standard 0 - 500
       });
     }
   }

@@ -2,10 +2,26 @@
   import Difference from "./Difference.svelte";
   import InstructionBlock from "./InstructionBlock.svelte";
   import cities from '../stores/Cities.js';
+  import { onMount } from 'svelte';
 
   function handleDelete(event) {
     cities.deleteCity(event.target.id);
   }
+
+  onMount(() => {
+      // let savedCities = localStorage.getItem("cities").split(";");
+      // for (let city in savedCities) {
+      //     getWeather(city.city, city.country)
+      //             .then((weather) => {
+      //                 let newCity = new City(
+      //                         city.city,
+      //                         city.country,
+      //                         weather.data
+      //                 );
+      //                 cities.addCity(newCity);
+      //             })
+      // }
+  })
 </script>
 
 {#if $cities.length === 0}
@@ -25,9 +41,9 @@
     { #each $cities as city}
         <tr>
             <td on:click|preventDefault={handleDelete} id={city.city} class="city-name-cell thin">{city.city}</td>
-            { #each city.weather as weather, index }
+            { #each city.weather as weather, i }
                 <td class="data-cell">
-                    <Difference weather="{weather}" baseWeather="{$cities[0].weather}" weatherMeasurementIndex="{index}"/>
+                    <Difference weather="{weather}" baseWeather="{$cities[0].weather}" cityIndex="{i}"/>
                 </td>
             {/each}
         </tr>
