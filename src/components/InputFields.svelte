@@ -9,6 +9,9 @@
     getWeather()
       .then((weather) => {
         let newCity = new City(newCityName, newCountryName, weather.data);
+        let serializedData = JSON.stringify(weather.data);
+        localStorage.setItem(`${newCityName},${newCountryName}`, serializedData)
+        localStorage.setItem("cities", localStorage.getItem("cities") + `;${newCityName},${newCountryName}`)
         cities.addCity(newCity);
         clearInputBoxes();
       })

@@ -21,7 +21,7 @@ class City {
         windSpeed: data[i].wind_spd, // measured in m/s
         humidity: data[i].rh, // measured in percentage
         solarRadiation: data[i].solar_rad, // measured in W / m^2
-        airQuality: data[i].aqi // measured in US - EPA standard 0 - 500
+        airQuality: data[i].aqi, // measured in US - EPA standard 0 - 500
       });
     }
   }

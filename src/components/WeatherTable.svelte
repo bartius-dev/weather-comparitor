@@ -2,25 +2,32 @@
   import Difference from "./Difference.svelte";
   import InstructionBlock from "./InstructionBlock.svelte";
   import cities from '../stores/Cities.js';
+  import City from "../City.js";
   import { onMount } from 'svelte';
 
   function handleDelete(event) {
-    cities.deleteCity(event.target.id);
+    cities.deleteCity(event.target.id.split(",")[0]);
+    localStorage.removeItem(`${event.target.id}`);
+    localStorage.setItem("cities", localStorage.getItem("cities").split(";").filter((cityAndCountry) => {
+          if (cityAndCountry !== event.target.id) {
+            return cityAndCountry;
+          }
+        }).join(";"))
   }
 
   onMount(() => {
-      // let savedCities = localStorage.getItem("cities").split(";");
-      // for (let city in savedCities) {
-      //     getWeather(city.city, city.country)
-      //             .then((weather) => {
-      //                 let newCity = new City(
-      //                         city.city,
-      //                         city.country,
-      //                         weather.data
-      //                 );
-      //                 cities.addCity(newCity);
-      //             })
-      // }
+    try {
+          let savedCitiesAndCountries = localStorage.getItem("cities").split(";");
+
+          for (let i = 0; i < savedCitiesAndCountries.length; i++) {
+            let savedCityJsonData = JSON.parse(localStorage.getItem(savedCitiesAndCountries[i]));
+
+            let savedCity = new City(savedCitiesAndCountries[i].split(",")[0], savedCitiesAndCountries[i].split(",")[1], savedCityJsonData)
+            cities.addCity(savedCity)
+        }
+    } catch (e) {
+        console.log(e);
+    }
   })
 </script>
 
@@ -40,7 +47,7 @@
     </thead>
     { #each $cities as city}
         <tr>
-            <td on:click|preventDefault={handleDelete} id={city.city} class="city-name-cell thin">{city.city}</td>
+            <td on:click|preventDefault={handleDelete} id={`${city.city},${city.country}`} class="city-name-cell thin">{city.city}</td>
             { #each city.weather as weather, i }
                 <td class="data-cell">
                     <Difference weather="{weather}" baseWeather="{$cities[0].weather}" cityIndex="{i}"/>

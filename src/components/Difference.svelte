@@ -5,8 +5,7 @@
 
   let difference;
   $: difference =
-    weather.highTempCelsius -
-    baseWeather[cityIndex].highTempCelsius;
+    weather.highTempCelsius - baseWeather[cityIndex].highTempCelsius;
 
   let differenceToStyleMap = {};
 

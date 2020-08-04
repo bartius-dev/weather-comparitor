@@ -11,7 +11,9 @@ describe("[UNIT] <Difference />", () => {
         lowTempCelsius: 1,
         highTempCelsius: 12,
       },
-      baseWeather: [{ dayOfWeek: "Sun", lowTempCelsius: 1, highTempCelsius: 12 }],
+      baseWeather: [
+        { dayOfWeek: "Sun", lowTempCelsius: 1, highTempCelsius: 12 },
+      ],
       cityIndex: 0,
     });
     let differenceSpan = document.getElementById("difference");
