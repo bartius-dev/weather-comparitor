@@ -26,7 +26,7 @@
             cities.addCity(savedCity)
         }
     } catch (e) {
-        console.log(e);
+        
     }
   })
 </script>
