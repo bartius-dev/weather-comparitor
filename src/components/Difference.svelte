@@ -1,37 +1,42 @@
 <script>
   export let weather;
   export let baseWeather;
-  export let weatherMeasurementIndex;
+  export let cityIndex;
 
   let difference;
-  $: difference = weather.high - baseWeather[weatherMeasurementIndex].high;
-  let differenceMap = {};
-  let tempDifference = 50;
+  $: difference =
+    weather.highTempCelsius - baseWeather[cityIndex].highTempCelsius;
+
+  let differenceToStyleMap = {};
+
+  let tempDifferenceKey = 50;
   for (let i = 0; i < 100; i++) {
     let style;
-    if (tempDifference > 30) {
+    if (tempDifferenceKey > 30) {
       style = "much-hotter";
-    } else if (tempDifference > 20) {
+    } else if (tempDifferenceKey > 20) {
       style = "hotter";
-    } else if (tempDifference > 10) {
+    } else if (tempDifferenceKey > 10) {
       style = "warmer";
-    } else if (tempDifference === 0) {
+    } else if (tempDifferenceKey === 0) {
       style = "invisible";
-    } else if (tempDifference > -5) {
+    } else if (tempDifferenceKey > -5) {
       style = "not-much-colder";
-    } else if (tempDifference > -15) {
+    } else if (tempDifferenceKey > -15) {
       style = "colder";
     } else {
       style = "much-colder";
     }
-    differenceMap[tempDifference] = style;
-    tempDifference--;
+    differenceToStyleMap[tempDifferenceKey] = style;
+    tempDifferenceKey--;
   }
 </script>
 
 <div>
-  {weather.high}
-  <span id="difference" class={differenceMap[difference]}>{difference}</span>
+  {weather.highTempCelsius}
+  <span id="difference" class={differenceToStyleMap[difference]}>
+    {difference}
+  </span>
 </div>
 
 <style>

@@ -2,6 +2,13 @@
   import InputFields from './InputFields.svelte';
   import WeatherTable from './WeatherTable.svelte';
   import Welcome from './Welcome.svelte';
+  import { onMount } from 'svelte';
+
+  onMount(() => {
+    if (localStorage.getItem("cities") == null) {
+      localStorage.setItem("cities", "");
+    }
+  })
 </script>
 
 <main>

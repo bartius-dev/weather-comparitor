@@ -8,11 +8,13 @@ describe("[UNIT] <Difference />", () => {
     const { getByText } = render(Difference, {
       weather: {
         dayOfWeek: "Sun",
-        low: 1,
-        high: 12,
+        lowTempCelsius: 1,
+        highTempCelsius: 12,
       },
-      baseWeather: [{ dayOfWeek: "Sun", low: 1, high: 12 }],
-      weatherMeasurementIndex: 0,
+      baseWeather: [
+        { dayOfWeek: "Sun", lowTempCelsius: 1, highTempCelsius: 12 },
+      ],
+      cityIndex: 0,
     });
     let differenceSpan = document.getElementById("difference");
     !expect(differenceSpan).toBeVisible();
@@ -24,14 +26,14 @@ describe("[UNIT] <Difference />", () => {
     const { getByText } = render(Difference, {
       weather: {
         dayOfWeek: "Sun",
-        low: 1,
-        high: 12,
+        lowTempCelsius: 1,
+        highTempCelsius: 12,
       },
       baseWeather: [
-        { dayOfWeek: "Sun", low: 1, high: 12 },
-        { dayOfWeek: "Mon", low: 1, high: 13 },
+        { dayOfWeek: "Sun", lowTempCelsius: 1, highTempCelsius: 12 },
+        { dayOfWeek: "Mon", lowTempCelsius: 1, highTempCelsius: 13 },
       ],
-      weatherMeasurementIndex: 1,
+      cityIndex: 1,
     });
 
     let differenceSpan = document.getElementById("difference");
@@ -55,19 +57,19 @@ describe("[UNIT] <Difference />", () => {
       render(Difference, {
         weather: {
           dayOfWeek: "Sun",
-          low: 0,
-          high: 0,
+          lowTempCelsius: 0,
+          highTempCelsius: 0,
         },
         baseWeather: [
-          { dayOfWeek: "Sun", low: 0, high: 0 },
-          { dayOfWeek: "Mon", low: 1, high: 16 },
-          { dayOfWeek: "Tue", low: 3, high: 6 },
-          { dayOfWeek: "Wed", low: 3, high: -5 },
-          { dayOfWeek: "Thu", low: 3, high: -11 },
-          { dayOfWeek: "Fri", low: 4, high: -21 },
-          { dayOfWeek: "Sat", low: 5, high: -31 },
+          { dayOfWeek: "Sun", lowTempCelsius: 0, highTempCelsius: 0 },
+          { dayOfWeek: "Mon", lowTempCelsius: 1, highTempCelsius: 16 },
+          { dayOfWeek: "Tue", lowTempCelsius: 3, highTempCelsius: 6 },
+          { dayOfWeek: "Wed", lowTempCelsius: 3, highTempCelsius: -5 },
+          { dayOfWeek: "Thu", lowTempCelsius: 3, highTempCelsius: -11 },
+          { dayOfWeek: "Fri", lowTempCelsius: 4, highTempCelsius: -21 },
+          { dayOfWeek: "Sat", lowTempCelsius: 5, highTempCelsius: -31 },
         ],
-        weatherMeasurementIndex: i,
+        cityIndex: i,
       });
 
       let differenceSpan = document.getElementById("difference");
