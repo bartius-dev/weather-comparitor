@@ -3,11 +3,11 @@
   import InstructionBlock from "./InstructionBlock.svelte";
   import cities from '../stores/Cities.js';
   import City from "../City.js";
+  import getWeather from "../GetWeather";
   import { onMount } from 'svelte';
 
   function handleDelete(event) {
     cities.deleteCity(event.target.id.split(",")[0]);
-    localStorage.removeItem(`${event.target.id}`);
     localStorage.setItem("cities", localStorage.getItem("cities").split(";").filter((cityAndCountry) => {
           if (cityAndCountry !== event.target.id) {
             return cityAndCountry;
@@ -16,18 +16,25 @@
   }
 
   onMount(() => {
-    try {
+      let savedCitiesAndCountries = localStorage.getItem("cities");
+      if (savedCitiesAndCountries !== "" && savedCitiesAndCountries !== null)
+      {
           let savedCitiesAndCountries = localStorage.getItem("cities").split(";");
 
           for (let i = 0; i < savedCitiesAndCountries.length; i++) {
-            let savedCityJsonData = JSON.parse(localStorage.getItem(savedCitiesAndCountries[i]));
+              let cityAndCountry = savedCitiesAndCountries[i].split(",");
+              let city = cityAndCountry[0];
+              let country = cityAndCountry[1];
+              getWeather(city, country)
+                      .then((weather) => {
+                          cities.addCity(new City(city, country, weather.data))
+                      })
+                        .catch((statusCode) => {
 
-            let savedCity = new City(savedCitiesAndCountries[i].split(",")[0], savedCitiesAndCountries[i].split(",")[1], savedCityJsonData)
-            cities.addCity(savedCity)
-        }
-    } catch (e) {
-        
-    }
+                        });
+
+          }
+      }
   })
 </script>
 

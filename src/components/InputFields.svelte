@@ -1,16 +1,15 @@
 <script>
   import cities from "../stores/Cities.js";
   import City from "../City.js";
+  import getWeather from "../GetWeather";
 
   let newCityName = "";
   let newCountryName = "";
 
   function handleClick() {
-    getWeather()
+    getWeather(newCityName, newCountryName)
       .then((weather) => {
         let newCity = new City(newCityName, newCountryName, weather.data);
-        let serializedData = JSON.stringify(weather.data);
-        localStorage.setItem(`${newCityName},${newCountryName}`, serializedData)
         localStorage.setItem("cities", localStorage.getItem("cities") + `;${newCityName},${newCountryName}`)
         cities.addCity(newCity);
         clearInputBoxes();
@@ -37,21 +36,6 @@
   function clearInputBoxes() {
     newCityName = "";
     newCountryName = "";
-  }
-
-  function getWeather() {
-    let apiKey = process.env.WEATHER_API_KEY || "WEATHER_API_KEY";
-    let weather = fetch(
-      `https://api.weatherbit.io/v2.0/forecast/daily?city=${newCityName}&country=${newCountryName}&key=${apiKey}`
-    ).then((response) => {
-      if (response.status === 200) {
-        return response.json();
-      }
-
-      return Promise.reject(response.status);
-    });
-
-    return weather;
   }
 </script>
 
