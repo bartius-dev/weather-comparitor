@@ -29,7 +29,7 @@
                       .then((weather) => {
                           cities.addCity(new City(city, country, weather.data))
                       })
-                        .catch((statusCode) => {
+                        .catch(() => {
 
                         });
 

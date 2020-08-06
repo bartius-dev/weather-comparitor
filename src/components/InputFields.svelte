@@ -10,7 +10,10 @@
     getWeather(newCityName, newCountryName)
       .then((weather) => {
         let newCity = new City(newCityName, newCountryName, weather.data);
-        localStorage.setItem("cities", localStorage.getItem("cities") + `;${newCityName},${newCountryName}`)
+        localStorage.setItem(
+          "cities",
+          localStorage.getItem("cities") + `;${newCityName},${newCountryName}`
+        );
         cities.addCity(newCity);
         clearInputBoxes();
       })
