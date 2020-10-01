@@ -5,7 +5,11 @@ function createCitiesStore() {
 
   return {
     subscribe,
-    addCity: (city) => update((cities) => [...cities, city]),
+    addCity: (city) => update((cities) => {
+      const exists = cities.find(c => c.city === city.city);
+      if (!exists) return [...cities, city];
+      return cities;
+    }),
     deleteCity: (cityToRemove) =>
       update((cities) =>
         cities.filter((city) => {
