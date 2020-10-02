@@ -110,12 +110,8 @@ describe("[UNIT] Cities Store", () => {
     });
 
     cities.addCity(newCity);
-    cities.addCity(newCity);
-    cities.addCity(newCity);
-    cities.addCity(newCity);
-    cities.addCity(newCity);
 
-    expect(c.length).toBe(5);
+    expect(c.length).toBe(1);
 
     cities.reset();
 
