@@ -3,10 +3,10 @@ version: '3.3'
 services:
   weather-app:
     image: node:12-buster-slim
-    container_name: wheater_comparitor_app
-    working_dir: /home/wheater_app/
+    container_name: weather_comparitor_app
+    working_dir: /home/weather_app/
     volumes:
-      - ./:/home/wheater_app/
+      - ./:/home/weather_app/
     ports:
       - 5000:5000
     stdin_open: true
