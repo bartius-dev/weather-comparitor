@@ -4,14 +4,14 @@
 
 ![Node.js CI](https://github.com/bartius-nigel/weather-comparitor/workflows/Node.js%20CI/badge.svg)
 
-Welcome to my little weather comparitor app! 
+Welcome to my little weather comparitor app!
 This little app will help you compare the weather in any city
 to any other city you want. Make packing for your next vacation
 just that much simpler!
 
 ## Contribution guide
 
-You're welcome to contribute! Most things are automated so all you have to do is write 
+You're welcome to contribute! Most things are automated so all you have to do is write
 application code.
 
 ### Requirements
@@ -20,14 +20,26 @@ Node.js 12.x
 
 ### Setting up a development environment
 
+This project can be completely run using `Docker` and `docker-compose`. **By doing that, we guarantee the application run using an unified environment**. You can find out more at [Compose command-line reference](https://docs.docker.com/compose/reference/).
+
 ```bash
 git clone https://github.com/bartius-nigel/weather-comparitor.git
 ```
 ```bash
-npm install
+docker-compose up -d weather-app
 ```
 ```bash
-npm run dev
+./run.sh npm install
+```
+```bash
+# served at http://localhost:5000 by default
+./run.sh npm run dev
+```
+
+Basic syntax for command execution inside the container in case you don't use a command line with bash:
+```bash
+# Just switch "./run.sh" for "docker-compose exec weather-app"
+docker-compose exec weather-app [COMMAND] [PARAMS] [ARGS]
 ```
 
 Code away!
@@ -39,7 +51,7 @@ This repo is formatted with Babel so you can write in any complicated syntax you
 #### issue tracking
 
 You can take a look at the issues documented or supply your own. To take responsibility for an issue,
-just comment on the issue page that you are working on it, create a branch and develop as you like. 
+just comment on the issue page that you are working on it, create a branch and develop as you like.
 Branch names or commit messages don't need to follow any convention.
 
 #### running the tests and linter locally
@@ -48,18 +60,18 @@ When you're done writing your awesome code, you can:
 
 check your code format:
 ```bash
-npm run lint
+./run.sh npm run lint
 ```
 
 or prettify your code automagically:
 ```bash
-npm run prettify
+./run.sh npm run prettify
 ```
 
 and finally, run the tests:
 ```bash
-npm run build
-npm run test
+./run.sh npm run build
+./run.sh npm run test
 ```
 
 #### making a pull request
@@ -68,7 +80,7 @@ Link your issues to your PRs by including a comment in the PR like so:
 
 closes #<ISSUE_NUMBER>
 
-This will move any issues around on the project board if there is one. 
+This will move any issues around on the project board if there is one.
 
 The PR will need one approval and one succesful test run, otherwise a merge will be impossible.
 
@@ -83,10 +95,10 @@ The testing engine used for svelte components is [Testing-Library](https://testi
 To create an optimised version of the app:
 
 ```bash
-npm run build
+./run.sh npm run build
 ```
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), 
+You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv),
 which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
 
 ### Deployment
