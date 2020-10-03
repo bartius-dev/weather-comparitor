@@ -1,3 +1,8 @@
+<script>
+  import GitHubRibbon from "./GitHubRibbon.svelte";
+</script>
+
+<GitHubRibbon />
 <h1>Welcome!</h1>
 <div class="cloud" />
 <div class="cloud-fluff" />
