@@ -15,24 +15,18 @@
         }).join(";"))
   }
 
-  onMount(() => {
+  onMount(async () => {
       let savedCitiesAndCountries = localStorage.getItem("cities");
-      if (savedCitiesAndCountries !== "" && savedCitiesAndCountries !== null)
+      if (savedCitiesAndCountries)
       {
-          let savedCitiesAndCountries = localStorage.getItem("cities").split(";");
-
+          savedCitiesAndCountries = savedCitiesAndCountries.split(";");
           for (let i = 0; i < savedCitiesAndCountries.length; i++) {
-              let cityAndCountry = savedCitiesAndCountries[i].split(",");
-              let city = cityAndCountry[0];
-              let country = cityAndCountry[1];
-              getWeather(city, country)
-                      .then((weather) => {
-                          cities.addCity(new City(city, country, weather.data))
-                      })
-                        .catch(() => {
-
-                        });
-
+              const cityAndCountry = savedCitiesAndCountries[i].split(",");
+              const [city, country] = cityAndCountry;
+              try {
+                const weather = await getWeather(city, country);
+                cities.addCity(new City(city, country, weather.data));
+              } catch (e) {}
           }
       }
   })
