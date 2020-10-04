@@ -26,7 +26,7 @@
               try {
                 const weather = await getWeather(city, country);
                 cities.addCity(new City(city, country, weather.data));
-              } catch (e) {}
+              } catch(e) { return; }
           }
       }
   })
