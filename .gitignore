@@ -225,4 +225,8 @@ fabric.properties
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/
 
+# Cypress test results
+cypress/screenshots
+cypress/videos
+
 # End of https://www.gitignore.io/api/git,node,macos,webstorm
