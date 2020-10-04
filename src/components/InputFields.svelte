@@ -9,10 +9,11 @@
   function handleClick() {
     getWeather(newCityName, newCountryName)
       .then((weather) => {
-        let newCity = new City(newCityName, newCountryName, weather.data);
+        const newCity = new City(newCityName, newCountryName, weather.data);
+        const savedCities = localStorage.getItem("cities");
         localStorage.setItem(
           "cities",
-          localStorage.getItem("cities") + `;${newCityName},${newCountryName}`
+          `${savedCities && `${savedCities};`}${newCityName},${newCountryName}`
         );
         cities.addCity(newCity);
         clearInputBoxes();
