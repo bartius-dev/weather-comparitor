@@ -1,10 +1,13 @@
 <script>
+  import Loading from "./Loading.svelte";
   import Difference from "./Difference.svelte";
   import InstructionBlock from "./InstructionBlock.svelte";
   import cities from '../stores/Cities.js';
   import City from "../City.js";
   import getWeather from "../GetWeather";
   import { onMount } from 'svelte';
+
+  let loading = true;
 
   function handleDelete(event) {
     cities.deleteCity(event.target.id.split(",")[0]);
@@ -15,23 +18,31 @@
         }).join(";"))
   }
 
-  onMount(async () => {
-      let savedCitiesAndCountries = localStorage.getItem("cities");
-      if (savedCitiesAndCountries)
-      {
-          savedCitiesAndCountries = savedCitiesAndCountries.split(";");
-          for (let i = 0; i < savedCitiesAndCountries.length; i++) {
-              const cityAndCountry = savedCitiesAndCountries[i].split(",");
-              const [city, country] = cityAndCountry;
-              try {
-                const weather = await getWeather(city, country);
-                cities.addCity(new City(city, country, weather.data));
-              } catch(e) { return; }
-          }
+  async function fetchSavedData() {
+    let savedCitiesAndCountries = localStorage.getItem("cities");
+    if (savedCitiesAndCountries)
+    {
+      savedCitiesAndCountries = savedCitiesAndCountries.split(";");
+      for (let i = 0; i < savedCitiesAndCountries.length; i++) {
+          const cityAndCountry = savedCitiesAndCountries[i].split(",");
+          const [city, country] = cityAndCountry;
+          try {
+            const weather = await getWeather(city, country);
+            cities.addCity(new City(city, country, weather.data));
+          } catch(e) { return; }
       }
+    }
+    loading = false;
+  }
+
+  onMount(() => {
+    fetchSavedData()
   })
 </script>
 
+{#if loading}
+  <Loading />
+{:else}
 {#if $cities.length === 0}
     <InstructionBlock/>
 {:else}
@@ -57,6 +68,7 @@
         </tr>
     { /each }
 </table>
+{/if}
 {/if}
 
 <style>
