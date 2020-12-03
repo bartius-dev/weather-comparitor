@@ -61,9 +61,7 @@
         <tr>
             <td on:click|preventDefault={handleDelete} id={`${city.city},${city.country}`} class="city-name-cell thin">{city.city}</td>
             { #each city.weather as weather, i }
-                <td class="data-cell">
                     <Difference weather="{weather}" baseWeather="{$cities[0].weather}" cityIndex="{i}"/>
-                </td>
             {/each}
         </tr>
     { /each }
@@ -109,7 +107,7 @@
   tr:hover {
     color: royalblue;
   }
-  tr:nth-child(odd) {
+  tr {
     background-color: aliceblue;
   }
   .thin {
