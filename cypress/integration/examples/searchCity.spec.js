@@ -29,5 +29,12 @@ context('Weather', () => {
             cy.waitForAnimationToFinish()
             cy.assertTableRowNumbers(2)
         })
+        it('should display city with the same name but different case', () => {
+            cy.searchForCity(cityCountry['1'].city.toUpperCase(), cityCountry['1'].country)
+            cy.waitForAnimationToFinish()
+            cy.get('tr').contains(cityCountry['1'].city, {matchCase: true})
+            cy.get('tr').contains(cityCountry['1'].city.toUpperCase(), {matchCase: true})
+            cy.assertTableRowNumbers(3)
+        })
     })
 })
