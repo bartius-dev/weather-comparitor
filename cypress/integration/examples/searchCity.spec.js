@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 import cityCountry from '../../fixtures/cityCountry.json'
+import invalidCityCountry from '../../fixtures/invalidCityCountry.json'
 
 context('Weather', () => {
     before(() => {
@@ -28,6 +29,22 @@ context('Weather', () => {
             cy.searchForCity(cityCountry['2'].city,cityCountry['2'].country)
             cy.waitForAnimationToFinish()
             cy.assertTableRowNumbers(2)
+        })
+    })
+    describe('User search weather for invalid city and country', () => {
+        it('should not add new row and should display error',()=>{
+            cy.searchForCity(invalidCityCountry['2'].city,invalidCityCountry['2'].country)
+            cy.waitForAnimationToFinish()
+            cy.wrap(new Promise((resolve, reject) => {
+                cy.on('window:alert', (txt) => {
+                    try{
+                        expect(txt).to.contains('Could not find that city & country combo');
+                    }catch (err){
+                        return reject(err)
+                    }
+                    resolve()
+                })
+            }))
         })
     })
 })
