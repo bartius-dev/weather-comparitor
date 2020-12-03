@@ -4,8 +4,16 @@ Cypress.Commands.add('waitForAnimationToFinish', () => {
 
 Cypress.Commands.add('searchForCity', ({city, country}) => {
     cy.get('#cityInput').clear().type(city)
-    cy.get('input[placeholder="Country"]').type(country)
+    cy.get('input[placeholder="Country"]').clear().type(country)
     cy.get('#cityInput ~ button').click()
+})
+
+Cypress.Commands.add('searchForCityWithNoData', () => {
+    cy.get('#cityInput')
+    .clear()
+    cy.get('input[placeholder="Country"]')
+    .clear()
+    cy.contains('Enter').click()
 })
 
 Cypress.Commands.add('assertTableRowNumbers', (expectedNumber) => {
