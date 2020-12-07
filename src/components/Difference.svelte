@@ -29,10 +29,8 @@
 </script>
 
 <td class="{getTempDifferenceKey(difference)} data-cell">
-  <div>
-    <span>{weather.highTempCelsius}</span>
-    <span class="difference"> {difference} </span>
-  </div>
+  <span>{weather.highTempCelsius}</span>
+  <span class="difference"> {difference} </span>
 </td>
 
 <style>

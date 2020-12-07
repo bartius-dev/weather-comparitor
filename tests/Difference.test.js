@@ -16,7 +16,7 @@ describe("[UNIT] <Difference />", () => {
       ],
       cityIndex: 0,
     });
-    let differenceSpan = document.getElementById("difference");
+    let differenceSpan = document.querySelector(".data-cell .difference");
     !expect(differenceSpan).toBeVisible();
 
     expect(getByText("12")).toBeInTheDocument();
@@ -36,7 +36,7 @@ describe("[UNIT] <Difference />", () => {
       cityIndex: 1,
     });
 
-    let differenceSpan = document.getElementById("difference");
+    let differenceSpan = document.querySelector(".data-cell .difference");
     expect(differenceSpan).toBeVisible();
 
     expect(getByText("12")).toBeInTheDocument();
@@ -72,9 +72,10 @@ describe("[UNIT] <Difference />", () => {
         cityIndex: i,
       });
 
-      let differenceSpan = document.getElementById("difference");
+      let differenceSpan = document.querySelector(".data-cell .difference");
+      let rowElement = document.querySelector("td.data-cell");
       expect(differenceSpan).toHaveTextContent(difference);
-      expect(differenceSpan).toHaveClass(colourClass);
+      expect(rowElement).toHaveClass(colourClass);
     }
   );
 });

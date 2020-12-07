@@ -52,7 +52,7 @@
         City
     </th>
     {#each $cities[0].weather as header}
-        <th class="data-cell thin">
+        <th class="data-cell">
             {header.dayOfWeek}
         </th>
     {/each}
@@ -106,9 +106,6 @@
   }
   tr:hover {
     color: royalblue;
-  }
-  tr {
-    background-color: aliceblue;
   }
   .thin {
     font-weight: lighter;
