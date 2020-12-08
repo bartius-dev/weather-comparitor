@@ -7,72 +7,75 @@
   $: difference =
     weather.highTempCelsius - baseWeather[cityIndex].highTempCelsius;
 
-  let differenceToStyleMap = {};
-
-  let tempDifferenceKey = 50;
-  for (let i = 0; i < 100; i++) {
+  function getTempDifferenceKey(difference) {
     let style;
-    if (tempDifferenceKey > 30) {
+    if (difference > 30) {
       style = "much-hotter";
-    } else if (tempDifferenceKey > 20) {
+    } else if (difference > 20) {
       style = "hotter";
-    } else if (tempDifferenceKey > 10) {
+    } else if (difference > 10) {
       style = "warmer";
-    } else if (tempDifferenceKey === 0) {
+    } else if (difference === 0) {
       style = "invisible";
-    } else if (tempDifferenceKey > -5) {
+    } else if (difference > -5) {
       style = "not-much-colder";
-    } else if (tempDifferenceKey > -15) {
+    } else if (difference > -15) {
       style = "colder";
     } else {
       style = "much-colder";
     }
-    differenceToStyleMap[tempDifferenceKey] = style;
-    tempDifferenceKey--;
+    return style;
   }
 </script>
 
-<div>
-  {weather.highTempCelsius}
-  <span id="difference" class={differenceToStyleMap[difference]}>
-    {difference}
-  </span>
-</div>
+<td class="{getTempDifferenceKey(difference)} data-cell">
+  <span>{weather.highTempCelsius}</span>
+  <span class="difference"> {difference} </span>
+</td>
 
 <style>
   .much-hotter {
+    background-color: #ff000033;
     color: red;
   }
 
   .hotter {
+    background-color: #ff450033;
     color: orangered;
   }
 
   .warmer {
+    background-color: #ff8c0033;
     color: darkorange;
   }
 
   .not-much-colder {
-    color: cornflowerblue;
+    background-color: #add8e633;
+    color: #6495ed;
   }
 
   .colder {
-    color: lightblue;
+    background-color: #6495ed33;
+    color: cornflowerblue;
   }
 
   .much-colder {
+    background-color: #00008b33;
     color: darkblue;
   }
 
   .invisible {
+    color: cornflowerblue;
+  }
+
+  .invisible .difference {
     visibility: hidden;
   }
 
-  span {
+  .difference {
     position: relative;
     top: -10px;
     left: 5px;
-    font-size: 0.0000001em;
-    font-weight: lighter;
+    font-size: 0.8em;
   }
 </style>
