@@ -1,14 +1,14 @@
 {
   "tokyo": {
-    "name": "Tokyo",
+    "city": "Tokyo",
     "country": "Japan"
   },
   "winnipeg": {
-    "name": "Winnipeg",
+    "city": "Winnipeg",
     "country": "Canada"
   },
   "sydney": {
-    "name": "Sydney",
+    "city": "Sydney",
     "country": "Australia"
   }
 }

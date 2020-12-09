@@ -12,10 +12,10 @@ context('Weather', () => {
     describe('User can search for weather in a city', () => {
         it('should be possible to search the weather of a single city at a time', () => {
             cy.searchForCity(tokyo)
-            cy.get('.name-name-cell').should('be.visible')
-                .then(($city) => {
-                    const text = $city.text()
-                    expect(text).to.include(tokyo.name)
+            cy.get('.city-name-cell').should('be.visible')
+                .then((city) => {
+                    const text = city.text()
+                    expect(text).to.include(tokyo.city)
                 })
         })
 

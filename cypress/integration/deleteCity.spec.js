@@ -13,7 +13,7 @@ context('Weather', () => {
             cy.searchForCity(tokyo)
             cy.get('.city-name-cell').should('be.visible')
             cy.waitForAnimationToFinish()
-            cy.deleteCity(tokyo.name)
+            cy.deleteCity(tokyo.city)
             cy.assertTableNotPresent()
         })
 
@@ -23,11 +23,11 @@ context('Weather', () => {
                 cy.waitForAnimationToFinish()
             }
             cy.assertTableRowNumbers(3)
-            cy.deleteCity(tokyo.name)
+            cy.deleteCity(tokyo.city)
             cy.assertTableRowNumbers(2)
-            cy.deleteCity(winnipeg.name)
+            cy.deleteCity(winnipeg.city)
             cy.assertTableRowNumbers(1)
-            cy.deleteCity(sydney.name)
+            cy.deleteCity(sydney.city)
             cy.assertTableNotPresent()
         })
     })
