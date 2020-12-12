@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
-import cityCountry from '../../fixtures/cityCountry.json'
+import cityCountry from '../fixtures/cityCountry.json'
+
+const {tokyo, winnipeg} = cityCountry
 
 context('Weather', () => {
     before(() => {
@@ -9,23 +11,23 @@ context('Weather', () => {
 
     describe('User can search for weather in a city', () => {
         it('should be possible to search the weather of a single city at a time', () => {
-            cy.searchForCity(cityCountry['1'].city,cityCountry['1'].country)
+            cy.searchForCity(tokyo)
             cy.get('.city-name-cell').should('be.visible')
-                .then(($city) => {
-                    const text = $city.text()
-                    expect(text).to.include(cityCountry['1'].city)
+                .then((city) => {
+                    const text = city.text()
+                    expect(text).to.include(tokyo.city)
                 })
         })
 
         it('should not add new row in table while searching for the city that was searched earlier', () => {
             //Note that the city we searched in above test is in the table already and we are searching again for the same city
-            cy.searchForCity(cityCountry['1'].city,cityCountry['1'].country)
+            cy.searchForCity(tokyo)
             cy.waitForAnimationToFinish()
             cy.assertTableRowNumbers(1)
         })
 
         it('should add new row in the table when a new city is searched', () => {
-            cy.searchForCity(cityCountry['2'].city,cityCountry['2'].country)
+            cy.searchForCity(winnipeg)
             cy.waitForAnimationToFinish()
             cy.assertTableRowNumbers(2)
         })
